@@ -56,5 +56,12 @@ O arquivo `config.py` contém as configurações da aplicação, como a URL do b
 6. Rode a aplicação:
     flask run
 
+## Imagens do sistema
+![image](https://github.com/user-attachments/assets/a5807abc-b0c3-4a36-9c9d-91744b72283d)
+![image](https://github.com/user-attachments/assets/f22a8196-b9a1-47b8-bc5b-542c527a61b1)
+
+
+   
+
 
 Use com responsabilidade amiguinho :-)
