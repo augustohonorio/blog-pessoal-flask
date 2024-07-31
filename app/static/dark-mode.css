@@ -1,0 +1,27 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+.navbar, .post-preview {
+    background-color: #1e1e1e;
+}
+.navbar-nav .nav-link {
+    color: #e0e0e0;
+}
+.post-title, .post-subtitle, .post-meta {
+    color: #e0e0e0;
+}
+.table, .table th, .table td {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-color: #343a40;
+}
+
+.btn-warning, .btn-danger {
+    color: #e0e0e0;
+}
+
+.form-group label, .form-control {
+    color: #e0e0e0;
+    background-color: #1e1e1e;
+}

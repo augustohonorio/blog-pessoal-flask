@@ -1,0 +1,25 @@
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+#editor {
+    height: 375px;
+  }
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-dark {
+    color: #000 !important;
+}

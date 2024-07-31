@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1 class="mt-4">{{ 'Edit Post' if post else 'New Post' }}</h1>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.title.label(class="form-label") }}
+      {{ form.title(class="form-control") }}
+    </div>
+    <div class="form-group">
+      <label for="editor">Body</label>
+      <div id="editor">{{ post.body|safe if post else '' }}</div>
+      {{ form.body(id="body", style="display:none;") }}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script>
+    var quill = new Quill('#editor', {
+      theme: 'snow',
+      modules: {
+        toolbar: [
+          [{ 'header': [1, 2, false] }],
+          ['bold', 'italic', 'underline', 'strike'],
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          [{ 'align': [] }],
+          ['link', 'image']
+        ]
+      },
+      placeholder: 'Compose an epic...'
+    });
+    var form = document.querySelector('form');
+    form.onsubmit = function() {
+      var body = document.querySelector('#body');
+      body.value = quill.root.innerHTML;
+    };
+  </script>  
+{% endblock %}

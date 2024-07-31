@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1 class="mt-4">{{ post.title }}</h1>
+  <p class="lead">{{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+  <hr>
+  <div>{{ post.body|safe }}</div>
+  {% if current_user.is_authenticated and current_user == post.author %}
+  <hr>
+  <a href="{{ url_for('routes.edit_post', slug=post.slug) }}" class="btn btn-secondary">Edit</a>
+  <form action="{{ url_for('routes.delete_post', slug=post.slug) }}" method="post" style="display:inline;">
+    {{ form.hidden_tag() }}
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+  {% endif %}
+{% endblock %}

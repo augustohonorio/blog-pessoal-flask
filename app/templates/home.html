@@ -1,0 +1,21 @@
+<!-- app/templates/home.html -->
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+  <form method="GET" action="{{ url_for('routes.home') }}" class="form-inline justify-content-center mb-4" style="margin-top:20px">
+    <input class="form-control mr-2" type="search" placeholder="Search posts" aria-label="Search" name="q">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+
+  {% for post in posts %}
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <h3 class="card-title"><a href="{{ url_for('routes.post', slug=post.slug) }}" class="text-dark">{{ post.title }}</a></h3>
+      <p class="card-text">{{ post.body[:150] | safe }}</p>
+    </div>
+    <div class="card-footer text-muted">
+      Posted on {{ post.timestamp.strftime('%B %d, %Y') }}
+    </div>
+  </div>
+  {% endfor %}
+{% endblock %}

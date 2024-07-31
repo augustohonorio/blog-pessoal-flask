@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1 class="mt-4">Admin Panel</h1>
+  <form method="POST" action="{{ url_for('routes.admin') }}">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.register_enabled.label(class="form-label") }}
+      {{ form.register_enabled(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">Update Settings</button>
+  </form>
+
+  <h2 class="mt-4">Usuários</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Promover</th>
+        <th>Deletar</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td>{{ user.username }}</td>
+        <td>
+          {% if not user.is_admin %}
+          <form method="POST" action="{{ url_for('routes.promote_user', user_id=user.id) }}">
+            {{ form.hidden_tag() }}
+            <button type="submit" class="btn btn-warning">Promote</button>
+          </form>
+          {% elif user.is_admin %}
+          <button class="btn btn-success">ADMINISTRADOR</button>
+          {% endif %}
+        </td>
+        <td>
+          <form method="POST" action="{{ url_for('routes.delete_user', user_id=user.id) }}">
+            {{ form.hidden_tag() }}
+            <button type="submit" class="btn btn-danger">Excluir usuário</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
